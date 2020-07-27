@@ -1,0 +1,106 @@
+/* Start Header section */
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1em;
+}
+
+.btns {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.dateUpdated {
+    cursor: help;
+    width: max-content;
+    padding: 1em;
+    border-radius: 1em;
+    color: #000;
+    border: 1px solid #bdc3c7;
+    transition: background .5s;
+}
+
+.buyMeCoffee-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #bdc3c7;
+    padding: 1em;
+    border-radius: 1em;
+    margin-left: 1em;
+    transition: background .5s;
+}
+
+.dateUpdated , .buyMeCoffee-btn {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.dateUpdated:hover,  .buyMeCoffee-btn:hover{
+    background-color: #e67e22;
+    color: #ffffff;
+    border: 1px solid transparent;
+    font-weight: 700;
+}
+/* End Header section */
+
+/* Start cards section */
+.world-tracker {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    width: 45%;
+    margin: 1em;
+    padding: .5em 1em;
+    border-radius: 1em;
+    box-shadow: 0 0 35px 0 rgba(73,80,87,.15);
+}
+
+.card-info {
+    width: 90%;
+}
+
+.card-info .card-title {
+    margin: .5em 0;
+}
+/* End cards section */
+
+
+@media (max-width: 1400px) {
+    .card {
+        width: 42%;
+        margin: .5em .5em;
+    }
+}
+@media (max-width: 850px) {
+    .card {
+        width: 100%;
+        margin: .5em .5em;
+    }
+    .btns {
+        width: 100%;
+    }
+}

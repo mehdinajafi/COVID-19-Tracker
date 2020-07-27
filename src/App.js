@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import World from './components/World'
 
 function App() {
   return (
-    <div>
-      <h3>Hello world</h3>
+    <div className="container">
+      <World/>
     </div>
   );
 }

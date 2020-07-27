@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+@media (max-width: 1150px) {
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+}
