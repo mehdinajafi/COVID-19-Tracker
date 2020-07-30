@@ -1,0 +1,181 @@
+.country-breakdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.country-breakdown-header {
+	padding: 1em 0 .5em 1em;
+}
+
+.search-input {
+	width: 12em;
+	padding: 1em 5em 1em .5em;
+	margin: 1em 0;
+	border: 1px solid transparent;
+	border-radius: .5em;
+	outline: none;
+	background: #ecf0f1;
+	font-family: 'Nunito', -apple-system, BlinkMacSystemFont,
+	'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell',
+	'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
+	transition: border .5s;
+}
+
+.search-input:focus {
+	border: 1px solid #2c3e50;
+}
+
+
+/************* Start table style *************/
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+table tr .recovered {
+	background-color: #3AA969;
+	color: #ffffff;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+    background: #eee; 
+}
+
+th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+}
+
+td, th { 
+    padding: 6px; 
+    border: 1px solid #ccc;  
+}
+
+.country {
+	width: 19%;
+}
+
+.country .country-flag{
+    width: 1.5rem;
+	height: 1rem;
+}
+
+.country .country-name {
+	padding-left: .2em;
+}
+
+/* If today cases and today deaths is not 0 background changed */
+.todayCases:not(:empty) {
+	background-color: #1877F2;
+	color: #ffffff;
+}
+
+.todayDeaths:not(:empty) {
+	background-color: #FB3938;
+	color: #ffffff;
+}
+/************* End table style *************/
+
+.show-less-btns {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: .5em;
+}
+
+.show-less-btns button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 0 .5em;
+	padding: .5em;
+	border: none;
+	border-radius: .5em;
+	outline: none;
+	cursor: pointer;
+	font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
+}
+
+.show-less-btns .show-more-btn {
+	background-color: #0074d9;
+	color: white;
+}
+
+.show-less-btns .show-more-btn:hover {
+	background-color: #006DCB;
+}
+
+.show-less-btns .show-less-btn {
+	background-color: #ff4136;
+	color: white;
+}
+
+.show-less-btns .show-less-btn:hover {
+	background-color: #EF3D33;
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+        left: -9999px;
+	}
+	
+	tr { 
+		border: 1px solid #ccc; 
+	}
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid transparent; 
+		position: relative;
+		padding-left: 50%; 
+		height: 2em;
+	}
+	
+	td:not(:nth-child(2)) {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Rank"; }
+	td:nth-of-type(2):before { content: "Country"; }
+	td:nth-of-type(3):before { content: "Cases"; }
+	td:nth-of-type(4):before { content: "Deaths"; }
+	td:nth-of-type(5):before { content: "Critical"; }
+	td:nth-of-type(6):before { content: "Recovered"; }
+	td:nth-of-type(7):before { content: "Today's Cases"; }
+	td:nth-of-type(8):before { content: "Today's Deaths"; }
+	td:nth-of-type(9):before { content: "Cases Per 1M"; }
+	td:nth-of-type(10):before { content: "Deaths Per 1M"; }
+}
