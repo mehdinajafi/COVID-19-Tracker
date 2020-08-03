@@ -79,6 +79,11 @@
     box-shadow: 0 0 35px 0 rgba(73,80,87,.15);
 }
 
+.card img {
+    width: 53px;
+    height: 71px;
+}
+
 .card-info {
     width: 90%;
 }

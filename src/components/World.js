@@ -37,14 +37,6 @@ const World = () => {
                     <h1><span role="img" aria-label="Close">🦠</span> COVID-19 Tracker</h1>
                     <p>Track the spread of the Coronavirus Covid-19 outbreak</p>
                 </div>
-                <div className="btns">
-                    <div className="dateUpdated">
-                        <span>{`Updated in: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`}</span>
-                    </div>
-                    <div className="buyMeCoffee">
-                        <a className="buyMeCoffee-btn">Buy me a coffee</a>
-                    </div>
-                </div>
             </div>
             {/* End header section */}
 

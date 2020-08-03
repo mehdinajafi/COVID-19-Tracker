@@ -56,23 +56,26 @@ const Charts = () => {
         <section className="charts">
             <div className="charts-header">
                 <h1><span role="img" aria-label="Close">📈</span> Charts</h1>
-                <h4>Filter</h4>
-
-                <span>By Country: </span>
-                <select onChange={(e) => onChangeFilterCountry(e)} value={country} className="chooseCountry">
-                    {
-                        countries.map(i => (
-                            <option key={i.Country}>{i.Country}</option>
-                        ))
-                    }
-                </select>
-
-                <span>  By Date: </span>
-                <select onChange={(e) => onChangeFilterDays(e)} value={daysShown}>
-                    <option value="-1">All the time</option>
-                    <option value={timeline.length - 90}>Last 3 Months</option>
-                    <option value={timeline.length - 30}>Last 30 Days</option>
-                </select>
+                <div className="filterChart">
+                    <div className="filterByCountry">
+                        <span for="filterCountry">Country: </span>
+                        <select onChange={(e) => onChangeFilterCountry(e)} value={country} className="filterCountry" id="filterCountry" >
+                            {
+                                countries.map(i => (
+                                    <option key={i.Country}>{i.Country}</option>
+                                ))
+                            }
+                        </select>
+                    </div>
+                    <div className="filterByDate">
+                        <span for="filterDay">  Date: </span>
+                        <select onChange={(e) => onChangeFilterDays(e)} value={daysShown} id="filterDay">
+                            <option value="-1">All the time</option>
+                            <option value={timeline.length - 90}>Last 3 Months</option>
+                            <option value={timeline.length - 30}>Last 30 Days</option>
+                        </select>
+                    </div>
+                </div>
                 
             </div>
             <div className="cases">
