@@ -22,7 +22,7 @@ const Charts = () => {
         .then((res) => {
             setTimeline(res.data)
         })
-    })
+    }, [country])
     useEffect(() => {
         axios.get('https://corona.azure-api.net/country')
             .then(res => {
@@ -58,7 +58,7 @@ const Charts = () => {
                 <h1><span role="img" aria-label="Close">📈</span> Charts</h1>
                 <div className="filterChart">
                     <div className="filterByCountry">
-                        <span for="filterCountry">Country: </span>
+                        <span htmlFor="filterCountry">Country: </span>
                         <select onChange={(e) => onChangeFilterCountry(e)} value={country} className="filterCountry" id="filterCountry" >
                             {
                                 countries.map(i => (
@@ -68,7 +68,7 @@ const Charts = () => {
                         </select>
                     </div>
                     <div className="filterByDate">
-                        <span for="filterDay">  Date: </span>
+                        <span htmlFor="filterDay">  Date: </span>
                         <select onChange={(e) => onChangeFilterDays(e)} value={daysShown} id="filterDay">
                             <option value="-1">All the time</option>
                             <option value={timeline.length - 90}>Last 3 Months</option>
