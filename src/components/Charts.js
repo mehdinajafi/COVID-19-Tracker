@@ -4,9 +4,9 @@ import {Line} from 'react-chartjs-2';
 import '../styles/Charts.css';
 
 const Charts = () => {
-    // Timeline state is an array of total cases, total deaths, date and total recovered  
+    // Timeline state is an array of {total cases, total deaths, date and total recovered} in a day
     // The information of this array is constantly received from this api:
-    // https://corona.azure-api.net/timeline/:country
+    // https://pomber.github.io/covid19/timeseries.json
     const [timeline, setTimeline] = useState([])
 
     // These three arrays are for filtering charts
@@ -18,25 +18,18 @@ const Charts = () => {
     const [daysShown, setDaysShown] = useState(-1)
 
     useEffect(() => {
-        axios.get(`https://corona.azure-api.net/timeline/${country}`)
+        axios.get('https://pomber.github.io/covid19/timeseries.json')
         .then((res) => {
-            setTimeline(res.data)
+            setTimeline(res.data[country])
         })
     }, [country])
+
     useEffect(() => {
-        axios.get('https://corona.azure-api.net/country')
+        axios.get('https://pomber.github.io/covid19/timeseries.json')
             .then(res => {
                 setCountries(
                     // Sort data by country's name
-                    res.data.sort((a, b) => {
-                        if(a.Country > b.Country) {
-                            return 1
-                        } else if (a.Country < b.Country) {
-                            return -1
-                        } else {
-                            return 0
-                        }
-                    })
+                    Object.keys(res.data).sort((a, b) => a - b)
                 )
             }) 
     }, [])
@@ -61,8 +54,8 @@ const Charts = () => {
                         <span htmlFor="filterCountry">Country: </span>
                         <select onChange={(e) => onChangeFilterCountry(e)} value={country} className="filterCountry" id="filterCountry" >
                             {
-                                countries.map(i => (
-                                    <option key={i.Country}>{i.Country}</option>
+                                countries.map(country => (
+                                    <option key={country}>{country}</option>
                                 ))
                             }
                         </select>
@@ -83,10 +76,10 @@ const Charts = () => {
                 <Line
                     data = {
                         {
-                            labels: filteredByDate.map(i => i.Date),
+                            labels: filteredByDate.map(day => day.date),
                             datasets: [{
                                 label: `Total cases in ${country}`,
-                                data: filteredByDate.map(i => i.Confirmed),
+                                data: filteredByDate.map(day => day.confirmed),
                                 backgroundColor: 'rgba(134,179,238, .4)',
                                 borderColor: 'rgba(24,119,242,1)',
                                 borderWidth: 1
@@ -103,10 +96,10 @@ const Charts = () => {
                 <Line
                     data = {
                         {
-                            labels: filteredByDate.map(i => i.Date),
+                            labels: filteredByDate.map(day => day.date),
                             datasets: [{
                                 label: `Total Deaths in ${country}`,
-                                data: filteredByDate.map(i => i.Deaths),
+                                data: filteredByDate.map(day => day.deaths),
                                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                                 borderColor: 'rgba(255, 9, 132, 1)',
                                 borderWidth: 1
